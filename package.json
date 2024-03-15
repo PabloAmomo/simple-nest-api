@@ -1,0 +1,127 @@
+{
+  "name": "nest-app-api",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:auth": "jest --bail ./src/contexts/auth/test/*.*.spec.ts",
+    "test:health": "jest --bail ./src/core/contexts/health/test/*.*.spec.ts",
+    "test:user": "jest --bail ./src/contexts/user/test/*.*.spec.ts",
+    "test:email": "jest --bail ./src/core/contexts/email/test/*.*.spec.ts",
+    "test:all-noe2e": "jest --bail --coverage ./src/*/*.*.spec.ts",
+    "test:all": "jest --bail --coverage ./*/*.*.spec.ts",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --bail --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:app": "jest --bail ./test/app.spec.ts",
+    "test:e2e-auth": "jest --bail ./app-e2e-auth.spec.ts",
+    "test:e2e-email": "jest --bail ./app-e2e-email.spec.ts",
+    "test:e2e-health": "jest --bail ./app-e2e-health.spec.ts",
+    "test:e2e-user-profile": "jest --bail ./app-e2e-user-profile.spec.ts",
+    "test:e2e-user-register": "jest --bail ./app-e2e-user-register.spec.ts",
+    "test:e2e-user": "jest --bail ./app-e2e-user.spec.ts",
+
+    "test:test": "jest --bail --coverage --collectCoverageFrom='./src/contexts/auth/auth.mapper.ts' ./src/contexts/auth/test/auth.mapper.spec.ts"
+  },
+  "dependencies": {
+    "@jest/test-sequencer": "^29.7.0",
+    "@nestjs-modules/mailer": "^1.10.3",
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/config": "^3.1.1",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/event-emitter": "^2.0.4",
+    "@nestjs/jwt": "^10.2.0",
+    "@nestjs/passport": "^10.0.3",
+    "@nestjs/platform-express": "^10.3.3",
+    "@nestjs/swagger": "^7.3.0",
+    "@nestjs/typeorm": "^10.0.2",
+    "@types/form-data": "^2.5.0",
+    "bcrypt": "^5.1.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "handlebars": "^4.7.8",
+    "mysql2": "^3.9.1",
+    "nodemailer": "^6.9.9",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.0",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@golevelup/ts-jest": "^0.4.0",
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/schematics": "^10.0.0",
+    "@nestjs/testing": "^10.0.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.2",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^20.3.1",
+    "@types/nodemailer": "^6.4.14",
+    "@types/passport-local": "^1.0.38",
+    "@types/supertest": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.5.0",
+    "prettier": "^3.0.0",
+    "source-map-support": "^0.5.21",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.2",
+    "ts-loader": "^9.4.3",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.1.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "./",
+    "testMatch": [
+      "**/test/**/*.spec.ts",
+      "**/src/**/*.spec.ts"
+    ],
+    "testPathIgnorePatterns": [],
+    "testSequencer": "./test/jest-sequencer.js",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "silent": false,
+    "detectOpenHandles": true,
+    "forceExit": true,
+    "collectCoverageFrom": [
+      "./src/**/*.(t|j)s"
+    ],
+    "coverageDirectory": "./coverage",
+    "coveragePathIgnorePatterns": [
+      "main.ts"
+    ],
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@repositories/(.*)$": "<rootDir>/src/core/repositories/$1",
+      "^@functions/(.*)$": "<rootDir>/src/core/functions/$1",
+      "^@core/(.*)$": "<rootDir>/src/core/$1",
+      "^@contexts/(.*)$": "<rootDir>/src/contexts/$1",
+      "^@mocks/(.*)$": "<rootDir>/mocks/$1"
+    }
+  }
+}
