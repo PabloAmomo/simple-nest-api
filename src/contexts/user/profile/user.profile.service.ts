@@ -30,7 +30,8 @@ export class UserProfileService {
 
   async getPathForImage(id: string): Promise<string> {
     const userEntity = await this.userRepository.getEntityById(id);
-    if (!userEntity) throw new ResourceNotFound('image not found');
+    if (!userEntity || !userEntity.profileImage)
+      throw new ResourceNotFound('image not found');
 
     const imagePath: string = path.resolve(
       process.cwd(),
